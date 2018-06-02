@@ -1,9 +1,9 @@
 const owner = N("owneraccount");
 
-@Database
+@database
 const db = new Database<Account>(N("accounts"));
 
-@Action
+@action
 function transfer(from: name, to: name, quantity: u64): void{
     require_auth(from);
     let fromAccount: Account = db.get(from);
@@ -13,7 +13,7 @@ function transfer(from: name, to: name, quantity: u64): void{
     addBalance(to, quantity);
 }
 
-@Action
+@action
 function issue(to: name, quantity: u64): void{
     require_auth(owner);
     addBalance(to, quantity);   
