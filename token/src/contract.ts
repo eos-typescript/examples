@@ -25,7 +25,7 @@ function addBalance(to: name, quantity: u64): void{
         toAccount.balance += quantity;
         db.update(toAccount);
     } else {
-        let toAccount = new Account(to quantity);
+        let toAccount = new Account(to, quantity);
         db.insert(toAccount);
     }
 }
