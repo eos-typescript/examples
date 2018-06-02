@@ -10,6 +10,7 @@ function transfer(from: name, to: name, quantity: u64): void{
     eosio_assert(fromAccount.balance >= quantity, "overdrawn balance");
     
     fromAccount.balance -= quantity;
+    db.update(fromAccount);
     addBalance(to, quantity);
 }
 
