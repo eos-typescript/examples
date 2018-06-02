@@ -25,15 +25,20 @@ function addBalance(to: name, quantity: u64): void{
         toAccount.balance += quantity;
         db.update(toAccount);
     } else {
-        let toAccount: Account = {"owner": to, "balance": quantity};
+        let toAccount = new Account(to quantity);
         db.insert(toAccount);
     }
 }
 
-interface Account {
+class Account {
     @PrimaryKey
     owner: name;
     balance: u64;
+    
+    constructor(owner: name, balance: u64) {
+        this.owner = owner;
+        this.balance = balance;
+    }
 }
 
 //TODO: Overflow detection
