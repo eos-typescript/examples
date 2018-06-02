@@ -31,7 +31,7 @@ function addBalance(to: name, quantity: u64): void{
 }
 
 class Account {
-    @PrimaryKey
+    @primary
     owner: name;
     balance: u64;
     
